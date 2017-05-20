@@ -171,9 +171,9 @@ if ("undefined" == typeof(cardbookComplexSearch)) {
 			
 			var aHBox = cardbookElementTools.addHBox(aType, aIndex, aOrigBox);
 
-			cardbookElementTools.addMenuCaselist(aHBox, aType, aIndex, aArray[0]);
-			cardbookElementTools.addMenuObjlist(aHBox, aType, aIndex, aArray[1]);
-			cardbookElementTools.addMenuTermlist(aHBox, aType, aIndex, aArray[2]);
+			cardbookElementTools.addMenuCaselist(aHBox, aType, aIndex, aArray[0], {flex: "1"});
+			cardbookElementTools.addMenuObjlist(aHBox, aType, aIndex, aArray[1], {flex: "1"});
+			cardbookElementTools.addMenuTermlist(aHBox, aType, aIndex, aArray[2], {flex: "1"});
 			cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', aArray[3], {flex: "1"}, aVersion, aIndex);
 
 			function fireUpButton(event) {

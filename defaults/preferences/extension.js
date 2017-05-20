@@ -43,7 +43,6 @@ pref("extensions.cardbook.fnFormula", "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}
 pref("extensions.cardbook.addressBooksNameList", "allAddressBooks");
 pref("extensions.cardbook.calendarsNameList", "");
 pref("extensions.cardbook.searchInNote", true);
-pref("extensions.cardbook.dateFormatMenu", "YYYY-MM-DD");
 pref("extensions.cardbook.numberOfDaysForSearching", "30");
 pref("extensions.cardbook.showPopupOnStartup", false);
 pref("extensions.cardbook.showPeriodicPopup", false);

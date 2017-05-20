@@ -87,18 +87,10 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var ldaysUntilNextBirthday = cardbookBirthdaysUtils.lBirthdayList[i][0];
 				var lBirthdayName  = cardbookBirthdaysUtils.lBirthdayList[i][1];
 				var lBirthdayAge = cardbookBirthdaysUtils.lBirthdayList[i][2];
-				var lDoB = cardbookBirthdaysUtils.lBirthdayList[i][3];
 
-				// Calculate date of next birthday (i.e. current year / next year)
-				var lDateOfBirth;
-				if (lDoB.length == 5) {
-					lDateOfBirth = new Date(convertStringToPRTime(convertDateToString(new Date(date_of_today.getFullYear(), lDoB.substring(3)-1, lDoB.substring(0,2)))) / 1000);
-				} else {
-					lDateOfBirth = new Date(convertStringToPRTime(lDoB) / 1000);
-				}  
 				var lBirthdayDate = new Date();
 				lBirthdayDate.setDate(date_of_today.getDate()+parseInt(ldaysUntilNextBirthday));
-	
+
 				// generate Date as Ical compatible text string
 				var lYear = lBirthdayDate.getFullYear();
 				var lMonth = lBirthdayDate.getMonth() + 1;
@@ -302,184 +294,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			return lnextBirthday;
 		},
 
-		verifyDateFields: function (lFieldDay, lFieldMonth, lFieldYear) {
-			var lReturn;
-			if (lFieldDay == "" && lFieldMonth == "") {
-				lReturn = "WRONGDATE";
-			} else {
-				if (lFieldDay <= 0 || lFieldDay > 31) {
-					lReturn = "WRONGDATE";
-				} else if (lFieldMonth <= 0 || lFieldMonth > 12) {
-					lReturn = "WRONGDATE";
-				} else if (lFieldYear <= 0 || lFieldYear > 3000) {
-					lReturn = "WRONGDATE";
-				} else {
-					try {
-						lReturn = convertDateToString(new Date(lFieldYear, lFieldMonth-1, lFieldDay));
-					}
-					catch (e) {
-						lReturn = "WRONGDATE";
-					}
-				}
-			}
-			return lReturn;
-		},
-
-		convertDateToGoodFormat: function (lDateOfBirth2, aDateFormat) {
-			switch(aDateFormat) {
-				case "YYYY-MM-DD":
-				case "DD-MM-YYYY":
-				case "MM-DD-YYYY":
-					var lSeparator = "-";
-					break;
-				case "YYYY.MM.DD":
-				case "DD.MM.YYYY":
-				case "MM.DD.YYYY":
-					var lSeparator = ".";
-					break;
-				case "YYYY/MM/DD":
-				case "DD/MM/YYYY":
-				case "MM/DD/YYYY":
-					var lSeparator = "/";
-					break;
-				default:
-					var lSeparator = "";
-					break;
-			}
-			var lReturn;
-			var lFirstField;
-			var lSecondField;
-			var lThirdField;
-			if (lDateOfBirth2.length < 3) {
-				lReturn = "WRONGDATE";
-			} else if (lSeparator != "" && lDateOfBirth2.indexOf(lSeparator) == -1) {
-				lReturn = "WRONGDATE";
-			} else if (lSeparator == "" && (lDateOfBirth2.indexOf("-") >= 0 || lDateOfBirth2.indexOf(".") >= 0 || lDateOfBirth2.indexOf("/") >= 0)) {
-				lReturn = "WRONGDATE";
-			} else {
-				switch(aDateFormat) {
-					case "YYYY-MM-DD":
-					case "YYYY.MM.DD":
-					case "YYYY/MM/DD":
-						if (lDateOfBirth2.split(lSeparator).length == 3) {
-							var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
-							if (lDateOfBirth2.replace(EmptyParamRegExp2, "$1")!=lDateOfBirth2) {
-								lFirstField = lDateOfBirth2.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = lDateOfBirth2.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lThirdField = lDateOfBirth2.replace(EmptyParamRegExp2, "$3");
-								lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-							}
-							lReturn = this.verifyDateFields(lThirdField,lSecondField,lFirstField);
-						} else {
-							var EmptyParamRegExp2 = new RegExp("^([^\-]*)\\" + lSeparator + "([^\-]*)", "ig");
-							if (lDateOfBirth2.replace(EmptyParamRegExp2, "$1")!=lDateOfBirth2) {
-								lFirstField = lDateOfBirth2.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = lDateOfBirth2.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							}
-							lReturn = this.verifyDateFields(lSecondField,lFirstField,'666');
-						}
-						break;
-					case "DD-MM-YYYY":
-					case "DD.MM.YYYY":
-					case "DD/MM/YYYY":
-						if (lDateOfBirth2.split(lSeparator).length == 3) {
-							var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
-							if (lDateOfBirth2.replace(EmptyParamRegExp2, "$1")!=lDateOfBirth2) {
-								lFirstField = lDateOfBirth2.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = lDateOfBirth2.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lThirdField = lDateOfBirth2.replace(EmptyParamRegExp2, "$3");
-								lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-							}
-							lReturn = this.verifyDateFields(lFirstField,lSecondField,lThirdField);
-						} else {
-							var EmptyParamRegExp2 = new RegExp("^([^\.]*)\\" + lSeparator + "([^\.]*)", "ig");
-							if (lDateOfBirth2.replace(EmptyParamRegExp2, "$1")!=lDateOfBirth2) {
-								lFirstField = lDateOfBirth2.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = lDateOfBirth2.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							}
-							lReturn = this.verifyDateFields(lFirstField,lSecondField,'666');
-						}
-						break;
-					case "MM-DD-YYYY":
-					case "MM.DD.YYYY":
-					case "MM/DD/YYYY":
-						if (lDateOfBirth2.split(lSeparator).length == 3) {
-							var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
-							if (lDateOfBirth2.replace(EmptyParamRegExp2, "$1")!=lDateOfBirth2) {
-								lFirstField = lDateOfBirth2.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = lDateOfBirth2.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-								lThirdField = lDateOfBirth2.replace(EmptyParamRegExp2, "$3");
-								lThirdField = (lThirdField.length<2?'0':'') + lThirdField;
-							}
-							lReturn = this.verifyDateFields(lSecondField,lFirstField,lThirdField);
-						} else {
-							var EmptyParamRegExp2 = new RegExp("^([^\/]*)\\" + lSeparator + "([^\/]*)", "ig");
-							if (lDateOfBirth2.replace(EmptyParamRegExp2, "$1")!=lDateOfBirth2) {
-								lFirstField = lDateOfBirth2.replace(EmptyParamRegExp2, "$1");
-								lFirstField = (lFirstField.length<2?'0':'') + lFirstField;
-								lSecondField = lDateOfBirth2.replace(EmptyParamRegExp2, "$2");
-								lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							}
-							lReturn = this.verifyDateFields(lSecondField,lFirstField,'666');
-						}
-						break;
-					case "YYYYMMDD":
-						if (lDateOfBirth2.length == 8) {
-							lFirstField = lDateOfBirth2.substr(0, 4);
-							lSecondField = lDateOfBirth2.substr(4, 2);
-							lThirdField = lDateOfBirth2.substr(6, 2);
-							lReturn = this.verifyDateFields(lThirdField,lSecondField,lFirstField);
-						} else if (lDateOfBirth2.length == 4 || lDateOfBirth2.length == 3) {
-							lFirstField = lDateOfBirth2.substr(0, 2);
-							lSecondField = lDateOfBirth2.substr(2, 2);
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lReturn = this.verifyDateFields(lSecondField,lFirstField,'666');
-						}
-						break;
-					case "DDMMYYYY":
-						if (lDateOfBirth2.length == 8) {
-							lFirstField = lDateOfBirth2.substr(0, 2);
-							lSecondField = lDateOfBirth2.substr(2, 2);
-							lThirdField = lDateOfBirth2.substr(4, 4);
-							lReturn = this.verifyDateFields(lFirstField,lSecondField,lThirdField);
-						} else if (lDateOfBirth2.length == 4 || lDateOfBirth2.length == 3) {
-							lFirstField = lDateOfBirth2.substr(0, 2);
-							lSecondField = lDateOfBirth2.substr(2, 2);
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lReturn = this.verifyDateFields(lFirstField,lSecondField,'666');
-						}
-						break;
-					case "MMDDYYYY":
-						if (lDateOfBirth2.length == 8) {
-							lFirstField = lDateOfBirth2.substr(0, 2);
-							lSecondField = lDateOfBirth2.substr(2, 2);
-							lThirdField = lDateOfBirth2.substr(4, 4);
-							lReturn = this.verifyDateFields(lSecondField,lFirstField,lThirdField);
-						} else if (lDateOfBirth2.length == 4 || lDateOfBirth2.length == 3) {
-							lFirstField = lDateOfBirth2.substr(0, 2);
-							lSecondField = lDateOfBirth2.substr(2, 2);
-							lSecondField = (lSecondField.length<2?'0':'') + lSecondField;
-							lReturn = this.verifyDateFields(lSecondField,lFirstField,'666');
-						}
-						break;
-					default:
-						lReturn = "WRONGDATE";
-				}
-			}
-			return lReturn;
-		},
-
-		getAllBirthdaysByName: function (lDateOfBirth, lName, lNumberOfDays2, lDateOfBirthFound, lEmail) {
+		getAllBirthdaysByName: function (aDateFormat, lDateOfBirth, lName, lNumberOfDays2, lDateOfBirthFound, lEmail) {
 			var date_of_today = new Date();
 			var endDate = new Date();
 			var dateRef = new Date();
@@ -487,7 +302,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var lAge;
 			var ldaysUntilNextBirthday;
 			var lDateOfBirthOld = lDateOfBirth;
-			lDateOfBirth = new Date(convertStringToPRTime(lDateOfBirth) / 1000);
+			lDateOfBirth = cardbookDates.convertDateStringToDate(lDateOfBirth, aDateFormat);
 
 			endDate.setDate(date_of_today.getDate()+parseInt(lNumberOfDays2));
 			while (dateRef < endDate) {
@@ -529,10 +344,10 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 						for (var j = 0; j < cardbookRepository.cardbookDisplayCards[myDirPrefId].length; j++) {
 							var myCard = cardbookRepository.cardbookDisplayCards[myDirPrefId][j];
 							if (myCard.bday != "") {
-								var lDateOfBirth = cardbookBirthdaysUtils.convertDateToGoodFormat(myCard.bday, dateFormat);
+								var lDateOfBirth = cardbookDates.isDateStringCorrectlyFormatted(myCard.bday, dateFormat);
 								if (lDateOfBirth != "WRONGDATE") {
 									listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
-									cardbookBirthdaysUtils.getAllBirthdaysByName(lDateOfBirth, myCard.fn, lnumberOfDays, myCard.bday, listOfEmail);
+									cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lDateOfBirth, myCard.fn, lnumberOfDays, myCard.bday, listOfEmail);
 								} else {
 									cardbookUtils.formatStringForOutput("birthdayEntry1Wrong", [myDirPrefName, myCard.fn, myCard.bday, dateFormat], "Warning");
 								}
@@ -545,10 +360,10 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
 										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
 											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
-											var lNotesDate = this.convertDateToGoodFormat(lNotesDateFound, dateFormat);
+											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
 											if (lNotesDate != "WRONGDATE") {
 												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
-												cardbookBirthdaysUtils.getAllBirthdaysByName(lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail);
+												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail);
 											} else {
 												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
 											}

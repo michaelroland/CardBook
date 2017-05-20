@@ -574,12 +574,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		loadDateFormats: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var dateFormatMenu = prefs.getComplexValue("extensions.cardbook.dateFormatMenu", Components.interfaces.nsISupportsString).data;
-			cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", dateFormatMenu);
-		},
-
 		validateEventEntryTitle: function () {
 			var checkTest = document.getElementById('calendarEntryTitleTextBox').value.split("%S").length - 1;
 			if (checkTest != 2) {
@@ -711,6 +705,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadPref: function () {
 			if (document.getElementById('preferenceValueTextbox').value == "") {
+				var cardbookPrefService = new cardbookPreferenceService();
 				document.getElementById('preferenceValueTextbox').value = cardbookPrefService.getPrefValueLabel();
 			}
 		},
@@ -1430,7 +1425,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadCustoms();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
-			wdw_cardbookConfiguration.loadDateFormats();
 			wdw_cardbookConfiguration.loadMailAccounts();
 			wdw_cardbookConfiguration.sortTrees(null, "mailAccountsTree");
 			wdw_cardbookConfiguration.loadRestrictions();

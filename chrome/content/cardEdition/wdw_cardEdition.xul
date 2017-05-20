@@ -30,13 +30,14 @@
 	onload="wdw_cardEdition.load();" resizable="true"
 	onclose="wdw_cardEdition.cancel();"
 	id="wdw_cardEdition"
-	persist="screenX screenY width height" class="cardbookBackgroundColorClass"
+	persist="screenX screenY width height" class="cardbookBackgroundColorClass dialog-content-box"
 	style="min-width:500px;min-height:600px;">
 	
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script src="chrome://cardbook/content/cardbookTypes.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>

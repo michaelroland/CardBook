@@ -2029,7 +2029,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 										cardbookRepository.cardbookSyncMode = "NOSYNC";
 										cardbookUtils.formatStringForOutput("synchroAllFinished");
 										if (aMode == "INITIAL") {
-											cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js","chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
+											cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js",
+																		"chrome://cardbook/content/cardbookDates.js",
+																		"chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
 											ovl_birthdays.onLoad();
 										}
 									}
@@ -2058,7 +2060,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								if (total === 0) {
 									cardbookRepository.cardbookSyncMode = "NOSYNC";
 									if (aMode == "INITIAL") {
-										cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js","chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
+										cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js",
+																	"chrome://cardbook/content/cardbookDates.js",
+																	"chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
 										ovl_birthdays.onLoad();
 									}
 								}

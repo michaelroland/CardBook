@@ -2,6 +2,8 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookCheckboxes.css" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
+<!-- for the preference star -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
 <!DOCTYPE window [
 	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
 	<!ENTITY % namesDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %namesDTD;
@@ -88,8 +90,6 @@
 				name="extensions.cardbook.calendarsNameList" type="string"/>
 			<preference id="extensions.cardbook.searchInNote"
 				name="extensions.cardbook.searchInNote" type="bool"/>
-			<preference id="extensions.cardbook.dateFormatMenu"
-				name="extensions.cardbook.dateFormatMenu" type="string"/>
 			<preference id="extensions.cardbook.numberOfDaysForSearching"
 				name="extensions.cardbook.numberOfDaysForSearching" type="string"/>
 			<preference id="extensions.cardbook.showPopupOnStartup"
@@ -632,10 +632,12 @@
 							<checkbox id="preferEmailPrefCheckBox" label="&preferEmailPrefLabel;"
 								accesskey="&preferEmailPrefAccesskey;"
 								preference="extensions.cardbook.preferEmailPref"/>
+							<image class="cardbookPrefStarClass" haspref="true"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
 							<caption label="&preferEmailPrefWarn;"/>
+							<image class="cardbookPrefStarClass"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
@@ -706,16 +708,6 @@
 								accesskey="&searchInNoteAccesskey;" 
 								tooltiptext = "&searchInNoteTooltip;"
 								preference="extensions.cardbook.searchInNote"/>
-						</hbox>
-						<separator class="thin"/>
-						<hbox align="center" >
-							<label value="&dateFormatLabel;"
-								accesskey="&dateFormatAccesskey;"
-								control="dateFormatMenuList"
-								id="dateFormatLabel"/>
-							<menulist id="dateFormatMenuList" preference="extensions.cardbook.dateFormatMenu">  
-								<menupopup id="dateFormatMenuPopup"/>
-							</menulist>    
 						</hbox>
 					</groupbox>
 				</tabpanel>

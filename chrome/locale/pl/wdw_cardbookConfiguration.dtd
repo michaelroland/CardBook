@@ -104,9 +104,9 @@
 <!ENTITY deleteTypeAccesskey "U">
 <!ENTITY resetTypeLabel "Przywróć domyślne">
 <!ENTITY resetTypeAccesskey "P">
-<!ENTITY preferenceGroupboxLabel "Pole PREF">
-<!ENTITY preferenceValueLabel "Etykieta pola wartości PREF (tylko vCard 4.0)">
-<!ENTITY preferenceValueAccesskey "w">
+<!ENTITY preferenceGroupboxLabel "Oznaczenie Podstawowy">
+<!ENTITY preferenceValueLabel "Etykieta oznaczenia Podstawowy (tylko vCard 4.0)">
+<!ENTITY preferenceValueAccesskey "o">
 
 <!ENTITY IMPPGroupboxWarn "Te ustawienia pozwalają na korzystanie z komunikatorów internetowych przy pomocy odpowiedniego protokołu.">
 <!ENTITY IMPPGroupboxLabel "Komunikatory internetowe">
@@ -159,9 +159,9 @@
 <!ENTITY decodeReportAccesskey "U">
 
 <!ENTITY miscEmailGroupboxLabel "Wysyłanie e-maili">
-<!ENTITY preferEmailPrefLabel "Preferuj adresy e-mail oznaczone jako PREFerowane">
+<!ENTITY preferEmailPrefLabel "Używaj adresów e-mail oznaczonych jako Podstawowy">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "Jeśli żaden z adresów nie jest oznaczony jako PREFerowany, wiadomość zostanie wysłana na wszystkie adresy z wizytówki.">
+<!ENTITY preferEmailPrefWarn "Jeśli żaden z adresów nie jest oznaczony jako Podstawowy, wiadomość zostanie wysłana na wszystkie adresy z wizytówki.">
 <!ENTITY warnEmptyEmailsLabel "Ostrzegaj, jeśli próbuję wysłać e-mail do wizytówki bez adresu e-mail">
 <!ENTITY warnEmptyEmailsAccesskey "O">
 <!ENTITY attachvCardWarn "Aby automatycznie dodawać vCard do Twoich e-maili, wybierz vCard dla każdego konta pocztowego. Gdy ta opcja jest włączona, CardBook załączy wybrany vCard do każdego e-maila wychodzącego z tego konta.">

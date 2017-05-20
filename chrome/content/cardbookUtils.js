@@ -122,7 +122,9 @@ if ("undefined" == typeof(cardbookUtils)) {
 				if (aType === "category") {
 					label = strBundle.getString("none");
 				} else if (aType === "type") {
-					label = strBundle.getString("noType");
+					// label = strBundle.getString("noType");
+					// better empty
+					label = "";
 				}
 			}
 			myMenulist.setAttribute("label", label);

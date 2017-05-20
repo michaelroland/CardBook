@@ -302,7 +302,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 														for (var l = 0; l < myCard.emails.length; l++) {
 															myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
 														}
-														wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join(', '), myDirPrefId]);
+														wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), myDirPrefId]);
 													}
 												}
 											}
@@ -329,7 +329,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 												}
 											}
 											if (myEmails != "") {
-												wdw_cardbookContactsSidebar.searchResults.push([myCategory, myDirPrefName, myEmails.join(', '), true, "CATCARDBOOK", myDirPrefId+"::"+myCategory, myFormattedEmails.join(', '), myDirPrefId]);
+												wdw_cardbookContactsSidebar.searchResults.push([myCategory, myDirPrefName, myEmails.join(', '), true, "CATCARDBOOK", myDirPrefId+"::"+myCategory, myFormattedEmails.join('@@@@@'), myDirPrefId]);
 											}
 										}
 									}
@@ -367,7 +367,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 														for (var l = 0; l < myCard.emails.length; l++) {
 															myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
 														}
-														wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join(', '), myDirPrefId]);
+														wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), myDirPrefId]);
 													}
 												}
 											}
@@ -402,7 +402,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 										}
 									}
 									if (myEmails != "") {
-										wdw_cardbookContactsSidebar.searchResults.push([myCategory, myDirPrefName, myEmails.join(', '), true, "CATCARDBOOK", searchCategory, myFormattedEmails.join(', '), myDirPrefId]);
+										wdw_cardbookContactsSidebar.searchResults.push([myCategory, myDirPrefName, myEmails.join(', '), true, "CATCARDBOOK", searchCategory, myFormattedEmails.join('@@@@@'), myDirPrefId]);
 									}
 								}
 							}
@@ -562,7 +562,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											for (var l = 0; l < myCard.emails.length; l++) {
 												myFormattedEmails.push(MailServices.headerParser.makeMimeAddress(myCard.fn, myCard.emails[l]));
 											}
-											wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join(', '), myDirPrefId]);
+											wdw_cardbookContactsSidebar.searchResults.push([myCard.fn, myDirPrefName, myCard.emails.join(', '), false, "CARDCARDBOOK", myCard, myFormattedEmails.join('@@@@@'), myDirPrefId]);
 										}
 									}
 								}
@@ -615,7 +615,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				myTree.view.selection.getRangeAt(i,start,end);
 				for (var j = start.value; j <= end.value; j++){
 					var allEmails = [];
-					allEmails = wdw_cardbookContactsSidebar.searchResults[j][6].split(', ');
+					allEmails = wdw_cardbookContactsSidebar.searchResults[j][6].split('@@@@@');
 					for (var k = 0; k < allEmails.length; k++) {
 						listOfEmails.push(allEmails[k]);
 					}

@@ -456,25 +456,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		validateCalendarPanel: function (aValue) {
+			var cardbookPrefService = new cardbookPreferenceService(document.getElementById('dirPrefIdTextBox').value);
+			var dateFormat = cardbookPrefService.getDateFormat();
 			if (wdw_cardEdition.panel === 1) {
-				var lYear = aValue.getFullYear();
-				var lMonth = aValue.getMonth() + 1;
-				lMonth += "";
-				if (lMonth.length == 1) {
-					lMonth = "0"+lMonth;
-				}
-				var lDay = aValue.getDate();
-				lDay += "";
-				if (lDay.length == 1) {
-					lDay = "0" + lDay;
-				}
-				document.getElementById('bdayTextBox').value = lYear + lMonth + lDay;
+				document.getElementById('bdayTextBox').value = cardbookDates.convertDateToDateString(aValue, dateFormat);
 				document.getElementById('bdayLightningPanel').hidePopup();
 			} else {
-				var lYear = aValue.substring(0,4);
-				var lMonth = aValue.substring(5,7);
-				var lDay = aValue.substring(8);
-				document.getElementById('bdayTextBox').value = lYear + lMonth + lDay;
+				var myDate = cardbookDates.convertDateStringToDate(aValue, 'YYYY-MM-DD');
+				document.getElementById('bdayTextBox').value = cardbookDates.convertDateToDateString(myDate, dateFormat);
 				document.getElementById('bdayBasePanel').hidePopup();
 			}
 			document.getElementById('bdayTextBox').focus();

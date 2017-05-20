@@ -163,7 +163,7 @@
 <!ENTITY preferEmailPrefLabel "Preferir emails marcados como PREFeridos">
 <!ENTITY preferEmailPrefAccesskey "W">
 <!ENTITY preferEmailPrefWarn "Se não existir nenhum PREFerido, a mensagem será enviada para todos os endereços de email.">
-<!ENTITY warnEmptyEmailsLabel "??Warn me when I attempt to email contacts without an email address??">
+<!ENTITY warnEmptyEmailsLabel "Avisar quando tento enviar emails para contactos sem endereço de email">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY attachvCardWarn "Para adicionar automaticamente um vCard, seleccione um vCard para cada conta de email. Se activo, o CardBook vai anexar esse vCard para todos os emails de saída da conta seleccionada.">
 <!ENTITY attachvCardGroupboxLabel "Unir vCard">

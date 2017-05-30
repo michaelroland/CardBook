@@ -120,7 +120,6 @@
 <!ENTITY deleteIMPPLabel "Usuń">
 <!ENTITY deleteIMPPAccesskey "U">
 
-<!ENTITY customFieldsPanelLabel "Zdefiniuj własne pola.">
 <!ENTITY customFieldName "Nazwa pola">
 <!ENTITY customFieldLabel "Etykieta pola">
 
@@ -175,12 +174,14 @@
 <!ENTITY displayvCardLabel "Zobacz vCard">
 <!ENTITY displayvCardAccesskey "Z">
 
-<!ENTITY birthdayListWarn "Daty urodzin są wyszukiwane tylko w książkach adresowych CardBook.">
+<!ENTITY birthdayListWarn "Daty urodzin są wyszukiwane tylko w książkach adresowych CardBook.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Książki adresowe">
 <!ENTITY calendarsGroupboxLabel "Kalendarze">
 <!ENTITY searchGroupboxLabel "Wyszukiwanie">
 <!ENTITY searchInNoteLabel "Wyszukuj daty urodzin w polu Notatki">
-<!ENTITY searchInNoteTooltip "Dodaj takie linie w polu Notatki (oddzielone : w formacie daty takim, jak podany poniżej): Urodziny:Ja i ty, pierwszy pocałunek:02.12.2006">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Wydarzenie:Opis:02.12.2006">
+<!ENTITY searchInNoteTooltipOld "Dodaj takie linie w polu Notatki (oddzielone : w formacie daty takim, jak podany poniżej): Urodziny:Ja i ty, pierwszy pocałunek:02.12.2006">
 <!ENTITY searchInNoteAccesskey "D">
 <!ENTITY dateFormatLabel "Oczekiwany format daty">
 <!ENTITY dateFormatAccesskey "O">

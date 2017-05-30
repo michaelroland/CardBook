@@ -43,7 +43,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			observerService.addObserver(this, "cardbook.cardImportedFromFile", false);
 
 			observerService.addObserver(this, "cardbook.identityChanged", false);
-			observerService.addObserver(this, "cardbook.restrictionsChanged", false);
+			observerService.addObserver(this, "cardbook.preferencesChanged", false);
 		},
 		
 		unregister: function() {
@@ -72,7 +72,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			observerService.removeObserver(this, "cardbook.cardImportedFromFile");
 
 			observerService.removeObserver(this, "cardbook.identityChanged");
-			observerService.removeObserver(this, "cardbook.restrictionsChanged");
+			observerService.removeObserver(this, "cardbook.preferencesChanged");
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -98,7 +98,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				case "cardbook.cardModifiedDirect":
 					wdw_cardbookContactsSidebar.onABChange();
 					break;
-				case "cardbook.restrictionsChanged":
+				case "cardbook.preferencesChanged":
 					wdw_cardbookContactsSidebar.onRestrictionsChanged();
 					break;
 				case "cardbook.identityChanged":
@@ -266,10 +266,10 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 							// All No Only categories
 							if ((searchCategory === "allCategories") || (searchCategory === "noCategory") || (searchCategory === "onlyCategories")) {
 								if (searchCategory !== "onlyCategories") {
-									for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
+									for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
 										if (j.indexOf(searchInput) >= 0 || searchInput == "") {
-											for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
-												var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k];
+											for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+												var myCard = cardbookRepository.cardbookCardSearch[myDirPrefId][j][k];
 												if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
 													var add = true;
 													for (var l in wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {
@@ -341,10 +341,10 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 								function searchArray(element) {
 									return element == myCategory;
 								};
-								for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
+								for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
 									if (j.indexOf(searchInput) >= 0 || searchInput == "") {
-										for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
-											var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k]
+										for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+											var myCard = cardbookRepository.cardbookCardSearch[myDirPrefId][j][k]
 											if (((myCard.categories.find(searchArray) != undefined) && (cardbookRepository.cardbookUncategorizedCards != myCategory))
 												|| ((myCard.categories.length == 0) && (cardbookRepository.cardbookUncategorizedCards == myCategory))) {
 												if (wdw_cardbookContactsSidebar.catExclRestrictions[myDirPrefId]) {

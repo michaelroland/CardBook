@@ -274,10 +274,10 @@ cardbookAutocompleteSearch.prototype = {
                             // display addressbook name in the comments column
                             myComment = cardbookRepository.cardbookAccounts[i][0];
                         }
-						for (var j in cardbookRepository.cardbookCardSearch2[myDirPrefId]) {
+						for (var j in cardbookRepository.cardbookCardSearch[myDirPrefId]) {
 							if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
-								for (var k = 0; k < cardbookRepository.cardbookCardSearch2[myDirPrefId][j].length; k++) {
-									var myCard = cardbookRepository.cardbookCardSearch2[myDirPrefId][j][k];
+								for (var k = 0; k < cardbookRepository.cardbookCardSearch[myDirPrefId][j].length; k++) {
+									var myCard = cardbookRepository.cardbookCardSearch[myDirPrefId][j][k];
 									if (this.catExclRestrictions[myDirPrefId]) {
 										var add = true;
 										for (var l in this.catExclRestrictions[myDirPrefId]) {

@@ -120,7 +120,6 @@
 <!ENTITY deleteIMPPLabel "Delete">
 <!ENTITY deleteIMPPAccesskey "D">
 
-<!ENTITY customFieldsPanelLabel "Define your own custom fields.">
 <!ENTITY customFieldName "Field Name">
 <!ENTITY customFieldLabel "Field Label">
 
@@ -175,12 +174,13 @@
 <!ENTITY displayvCardLabel "View the vCard">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "Birthdays are only searched within CardBook address books.">
+<!ENTITY birthdayListWarn "Birthdays are only searched within CardBook address books. Birthdays date formats are set up in the address book properties.">
 <!ENTITY addressBooksGroupboxLabel "Address Books">
 <!ENTITY calendarsGroupboxLabel "Calendars">
 <!ENTITY searchGroupboxLabel "Search">
-<!ENTITY searchInNoteLabel "Search birthdays in the Note field">
-<!ENTITY searchInNoteTooltip "Add such lines in the Note field  (separator should be : and the date format should be the one given below) : Birthday:You and me, first kiss:02.12.2006">
+<!ENTITY searchInNoteLabel "Search birthdays in the Notes field">
+<!ENTITY searchInNoteTooltip1 "Add such lines in the Notes field  (separator should be : and the date format should be the one defined for the address book) :">
+<!ENTITY searchInNoteTooltip2 "Event:Description:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Expected date format">
 <!ENTITY dateFormatAccesskey "E">

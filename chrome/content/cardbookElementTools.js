@@ -378,6 +378,10 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				cardbookUtils.updatePanelMenulist('type', this);
 			};
 			aPanel.addEventListener("popuphiding", firePopuphiding, false);
+			function fireKeyDown(aEvent) {
+				cardbookUtils.enterPanelMenulist('type', aEvent, this);
+			};
+			aMenulist.addEventListener("keydown", fireKeyDown, false);
 		},
 
 		addMenuCaselist: function (aParent, aType, aIndex, aValue, aParameters) {

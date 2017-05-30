@@ -7,7 +7,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allRestrictions: [],
 		allEmailsCollections: [],
 		allMailAccounts: [],
-		prefEmailPref: false,
+		preferEmailPrefOld: false,
 		
 		sortTreesFromCol: function (aEvent, aColumn, aTreeName) {
 			if (aEvent.button == 0) {
@@ -286,12 +286,12 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadPrefEmailPref: function () {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			wdw_cardbookConfiguration.prefEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
+			wdw_cardbookConfiguration.preferEmailPrefOld = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
 		},
 
 		validatePrefEmailPref: function () {
 			var myNewCheck = document.getElementById('preferEmailPrefCheckBox').checked;
-			if (myNewCheck !== wdw_cardbookConfiguration.prefEmailPref) {
+			if (myNewCheck !== wdw_cardbookConfiguration.preferEmailPrefOld) {
 				for (j in cardbookRepository.cardbookCards) {
 					let myCard = cardbookRepository.cardbookCards[j];
 					if (!myCard.isAList) {
@@ -893,7 +893,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				cardbookPrefService.setRestriction(wdw_cardbookConfiguration.allRestrictions[i][1], wdw_cardbookConfiguration.allRestrictions[i][0].toString() + "::" + wdw_cardbookConfiguration.allRestrictions[i][9]
 													+ "::" + wdw_cardbookConfiguration.allRestrictions[i][3] + "::" + wdw_cardbookConfiguration.allRestrictions[i][5] + "::" + wdw_cardbookConfiguration.allRestrictions[i][6]);
 			}
-			cardbookUtils.notifyObservers("cardbook.restrictionsChanged");
 		},
 
 		selectEmailsCollection: function() {
@@ -1167,6 +1166,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					cardbookPrefService.setTypes(i, j, wdw_cardbookConfiguration.allTypes[i][j][0] + ":" + wdw_cardbookConfiguration.allTypes[i][j][1]);
 				}
 			}
+			cardbookUtils.notifyObservers("cardbook.typesChanged");
 		},
 
 		selectIMPPsCategory: function () {
@@ -1457,6 +1457,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				// return false;
 				throw "CardBook validation error";
 			}
+			cardbookUtils.notifyObservers("cardbook.preferencesChanged");
 		},
 		
 

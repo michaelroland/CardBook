@@ -120,7 +120,6 @@
 <!ENTITY deleteIMPPLabel "Törlés">
 <!ENTITY deleteIMPPAccesskey "T">
 
-<!ENTITY customFieldsPanelLabel "Határozza meg a saját egyéni mezőket.">
 <!ENTITY customFieldName "Mező neve">
 <!ENTITY customFieldLabel "Mezőcímkét">
 
@@ -175,12 +174,14 @@
 <!ENTITY displayvCardLabel "vCard nézes">
 <!ENTITY displayvCardAccesskey "n">
 
-<!ENTITY birthdayListWarn "Születésnapok csak rákeresett névjegyzéket.">
+<!ENTITY birthdayListWarn "Születésnapok csak rákeresett névjegyzéket.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Minden mappa">
 <!ENTITY calendarsGroupboxLabel "Naptár">
 <!ENTITY searchGroupboxLabel "Keresés">
 <!ENTITY searchInNoteLabel "Születésnapok a jegyzetek mezőben keresés">
-<!ENTITY searchInNoteTooltip "A jegyzétek mezőben a szöveget (elválasztó legyen, és a dátum formátum legyen az egyik alább): Születésnap:tárgy:éééé.hh.nn.">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Esemény:Leírás:02.12.2006">
+<!ENTITY searchInNoteTooltipOld "A jegyzétek mezőben a szöveget (elválasztó legyen, és a dátum formátum legyen az egyik alább): Születésnap:tárgy:éééé.hh.nn.">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Várható dátum formátum">
 <!ENTITY dateFormatAccesskey "V">

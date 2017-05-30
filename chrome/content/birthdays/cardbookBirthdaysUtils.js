@@ -332,6 +332,8 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			loader.loadSubScript("chrome://cardbook/content/cardbookUtils.js");
 			var myContact = cardbookBirthdaysUtils.getPref("extensions.cardbook.addressBooksNameList");
 			var searchInNote = cardbookBirthdaysUtils.getPref("extensions.cardbook.searchInNote");
+			var strBundle = document.getElementById("cardbook-strings");
+			var eventInNoteEventPrefix = strBundle.getString("eventInNoteEventPrefix");
 			cardbookBirthdaysUtils.lBirthdayList = [];
 			
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
@@ -355,7 +357,23 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 							if (searchInNote == true) {
 								var lNotesLine = myCard.note.split("\n");
 								for (var a=0;a<lNotesLine.length;a++) {
+									// compatibility when not localized
 									var EmptyParamRegExp1 = new RegExp("^Birthday:([^:]*):([^:]*)([:]*)(.*)", "ig");
+									if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
+										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
+										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {
+											var lNotesDateFound = lNotesLine[a].replace(EmptyParamRegExp1, "$2").replace(/^\s+|\s+$/g,"");
+											var lNotesDate = cardbookDates.isDateStringCorrectlyFormatted(lNotesDateFound, dateFormat);
+											if (lNotesDate != "WRONGDATE") {
+												listOfEmail = cardbookUtils.getMimeEmailsFromCards([myCard]);
+												cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, lNotesDate, lNotesName, lnumberOfDays, lNotesDateFound, listOfEmail);
+											} else {
+												cardbookUtils.formatStringForOutput("birthdayEntry2Wrong", [myDirPrefName, myCard.fn, lNotesDateFound, dateFormat], "Warning");
+											}
+										}
+									}
+									// now localized
+									var EmptyParamRegExp1 = new RegExp("^" + eventInNoteEventPrefix + ":([^:]*):([^:]*)([:]*)(.*)", "ig");
 									if (lNotesLine[a].replace(EmptyParamRegExp1, "$1")!=lNotesLine[a]) {
 										var lNotesName = lNotesLine[a].replace(EmptyParamRegExp1, "$1").replace(/^\s+|\s+$/g,"");
 										if (lNotesLine[a].replace(EmptyParamRegExp1, "$2")!=lNotesLine[a]) {

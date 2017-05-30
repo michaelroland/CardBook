@@ -2139,8 +2139,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookDisplayCards = {};
 			cardbookRepository.cardbookFileCacheCards = {};
 			cardbookRepository.cardbookCards = {};
-			cardbookRepository.cardbookCardSearch1 = {};
-			cardbookRepository.cardbookCardSearch2 = {};
+			cardbookRepository.cardbookCardSearch = {};
 	
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");

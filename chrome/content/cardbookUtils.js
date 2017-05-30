@@ -104,6 +104,79 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return myResult;
 		},
 
+		// allow the keyboard navigation for the type and category panel
+		enterPanelMenulist: function (aType, aEvent, aMenulist) {
+			let myPanel = document.getElementById(aMenulist.id.replace("Menulist", "Panel"));
+			let myListBox = document.getAnonymousElementByAttribute(myPanel, "anonid", "itemsListbox");
+			let myTextBox = document.getAnonymousElementByAttribute(myPanel, "anonid", "addItemTextbox");
+			if (aEvent.key == "Tab" && !aEvent.shiftKey) {
+				if (myTextBox.hasAttribute("focused")) {
+					if (myListBox.itemCount != 0) {
+						if (!myListBox.selectedItem) {
+							myListBox.selectedItem = myListBox.firstChild;
+						}
+						myListBox.selectedItem.focus();
+						aEvent.stopImmediatePropagation();
+					} else {
+						myPanel.hidePopup();
+						cardbookUtils.updatePanelMenulist(aType, myPanel);
+						aMenulist.focus();
+					}
+				} else {
+					myPanel.hidePopup();
+					cardbookUtils.updatePanelMenulist(aType, myPanel);
+					aMenulist.focus();
+				}
+			} else if (aEvent.key == "Tab" && aEvent.shiftKey) {
+				if (myTextBox.hasAttribute("focused")) {
+					myPanel.hidePopup();
+				} else {
+					if (aType === "type") {
+						myPanel.hidePopup();
+					}
+				}
+			} else if (aEvent.key == "Escape") {
+				aMenulist.focus();
+				cardbookUtils.updatePanelMenulist(aType, myPanel);
+				aEvent.stopPropagation();
+			} else if (myTextBox.hasAttribute("focused")) {
+				aEvent.stopPropagation();
+			} else if (((aEvent.key == "ArrowDown") || (aEvent.key == "ArrowUp")) && (document.commandDispatcher.focusedElement == aMenulist)) {
+				myPanel.openPopup(aEvent.target, 'after_start');
+				if (aType === "type") {
+					if (!myListBox.selectedItem) {
+						myListBox.selectedItem = myListBox.firstChild;
+					}
+					myListBox.focus();
+				} else {
+					myTextBox.focus();
+				}
+			} else if ((aEvent.key != "ArrowDown") && (aEvent.key != "ArrowUp")) {
+				if (!myTextBox.hasAttribute("focused")) {
+					let found = false;
+					// first try to find if there is a matching entry
+					for (var i = 0; i < myListBox.itemCount; i++) {
+						if (myListBox.getItemAtIndex(i).getAttribute("label").substr(0,1).toLowerCase() == aEvent.key.toLowerCase()) {
+							myListBox.getItemAtIndex(i).checked = !myListBox.getItemAtIndex(i).checked;
+							myListBox.selectedItem = myListBox.getItemAtIndex(i);
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						// if not open the popup 
+						myPanel.openPopup(aEvent.target, 'after_start');
+						if (!myListBox.selectedItem) {
+							myListBox.selectedItem = myListBox.firstChild;
+						}
+						myListBox.focus();
+					} else {
+						cardbookUtils.updatePanelMenulist(aType, myPanel);
+					}
+				}
+			}
+		},
+
 		updatePanelMenulist: function (aType, aPanel) {
 			var strBundle = document.getElementById("cardbook-strings");
 			let myMenulist = document.getElementById(aPanel.id.replace("Panel", "Menulist"));
@@ -1550,6 +1623,16 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return false;
 		},
 
+		getAvailableAccountNumber: function() {
+			var result = 0;
+			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
+				if (cardbookRepository.cardbookAccounts[i][1] && cardbookRepository.cardbookAccounts[i][5] && cardbookRepository.cardbookAccounts[i][6] != "SEARCH") {
+					result++;
+				}
+			}
+			return result;
+		},
+
 		isFileAlreadyOpen: function(aAccountPath) {
 			cardbookUtils.jsInclude(["chrome://cardbook/content/preferences/cardbookPreferences.js"]);
 			for (var i = 0; i < cardbookRepository.cardbookAccounts.length; i++) {
@@ -1722,6 +1805,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 				var fileName = aUid.replace(/^urn:uuid:/i, "") + "." + aEtag + "." + aType + "." + aExtension.toLowerCase();
 				fileName = fileName.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-');
 				mediaFile.append(fileName);
+				// bug on windows (with Apple photo)
+				var osString = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS;  
+				if ((osString == "WINNT") && (mediaFile.path.length > 259)) {
+					mediaFile.initWithPath(mediaFile.path.substring(0, 259));
+				}
 				return mediaFile;
 			}
 			catch (e) {

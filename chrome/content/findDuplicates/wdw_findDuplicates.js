@@ -170,7 +170,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			aRow.setAttribute('align', 'center');
 			aRow.setAttribute('flex', '1');
 			// dirty hack to have the lines not shrinked on Linux only with blue.css
-			aRow.setAttribute('style', 'min-height:32px;');
+			aRow.setAttribute('style', 'min-height:36px;');
 			return aRow
 		},
 

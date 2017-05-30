@@ -11,9 +11,8 @@
 	border: 0px !important;
 }
 
+/* for Linux Mint otherwise gmail is not entirely seen in mail edition */
 .cardbookBackgroundColorClass textbox {
-	-moz-appearance: none !important;
-	border: 1px solid ThreeDShadow !important;
 	min-height:16px !important;
 }
 .cardbookBackgroundColorClass textbox[readonly="true"] {

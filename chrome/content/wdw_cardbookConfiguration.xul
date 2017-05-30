@@ -2,6 +2,8 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/skin/cardbookCheckboxes.css" type="text/css"?>
 <?xul-overlay href="chrome://cardbook/content/ovl_cardbookStringBundle.xul"?>
+<!-- for the preference star -->
+<?xml-stylesheet href="chrome://cardbook-os/skin/cardbookPrefStar.css" type="text/css"?>
 <!DOCTYPE window [
 	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
 	<!ENTITY % namesDTD SYSTEM "chrome://cardbook/locale/wdw_nameEdition.dtd"> %namesDTD;
@@ -88,8 +90,6 @@
 				name="extensions.cardbook.calendarsNameList" type="string"/>
 			<preference id="extensions.cardbook.searchInNote"
 				name="extensions.cardbook.searchInNote" type="bool"/>
-			<preference id="extensions.cardbook.dateFormatMenu"
-				name="extensions.cardbook.dateFormatMenu" type="string"/>
 			<preference id="extensions.cardbook.numberOfDaysForSearching"
 				name="extensions.cardbook.numberOfDaysForSearching" type="string"/>
 			<preference id="extensions.cardbook.showPopupOnStartup"
@@ -117,13 +117,12 @@
 		</preferences>
 
 		<tabbox id="advancedPrefs" width="400" height="300">
-			
+
 			<tabs>
 				<tab id="generalTab" label="&generalTabLabel;"/>
 				<tab id="editionTab" label="&editionTabLabel;"/>
 				<tab id="typesTab" label="&typesTabLabel;"/>
 				<tab id="IMPPTab" label="&IMPPsTabLabel;"/>
-				<tab id="orgTab" label="&orgTitleLabel;"/>
 				<tab id="customFieldsTab" label="&customFieldsTabLabel;"/>
 				<tab id="listsTab" label="&listsTabLabel;"/>
 				<tab id="syncTab" label="&syncTabLabel;"/>
@@ -131,7 +130,7 @@
 				<tab id="birthdaylistTab" label="&birthdaylistTabLabel;"/>          
 				<tab id="synclistTab" label="&synclistTabLabel;"/>  
 			</tabs>
-			
+
 			<tabpanels>
 				<tabpanel orient="vertical">
 					<groupbox>
@@ -435,10 +434,72 @@
 				</tabpanel>
 
 				<tabpanel orient="vertical">
-					<description>&orgWarn;</description>
-					<separator class="thin"/>
+					<groupbox>
+						<caption label="&customFieldsTabLabel;"/>
+						<groupbox>
+							<caption label="&persTitleLabel;"/>
+							<hbox flex="1">
+								<vbox flex="1">
+									<grid align="center" flex="1">
+										<columns>
+											<column flex="1"/>
+											<column flex="1"/>
+										</columns>
+							
+										<rows>
+											<row align="center">
+												<label value="&customFieldName;"/>
+												<label value="&customFieldLabel;"/>
+											</row>
+											<row align="center">
+												<textbox id="customField1NameName" label="&customFieldName;"/>
+												<textbox id="customField1NameLabel" label="&customFieldLabel;"/>
+											</row>
+											<row align="center">
+												<textbox id="customField2NameName" label="&customFieldName;"/>
+												<textbox id="customField2NameLabel" label="&customFieldLabel;"/>
+											</row>
+										</rows>
+									</grid>
+								</vbox>
+							</hbox>
+						</groupbox>
+
+						<groupbox>
+							<caption label="&orgTitleLabel;"/>
+							<hbox flex="1">
+								<vbox flex="1">
+									<grid align="center" flex="1">
+										<columns>
+											<column flex="1"/>
+											<column flex="1"/>
+										</columns>
+							
+										<rows>
+											<row align="center">
+												<label value="&customFieldName;"/>
+												<label value="&customFieldLabel;"/>
+											</row>
+											<row align="center">
+												<textbox id="customField1OrgName" label="&customFieldName;"/>
+												<textbox id="customField1OrgLabel" label="&customFieldLabel;"/>
+											</row>
+											<row align="center">
+												<textbox id="customField2OrgName" label="&customFieldName;"/>
+												<textbox id="customField2OrgLabel" label="&customFieldLabel;"/>
+											</row>
+										</rows>
+									</grid>
+								</vbox>
+							</hbox>
+						</groupbox>
+					</groupbox>
+
 					<groupbox>
 						<caption label="&orgTitleLabel;"/>
+						<separator class="thin"/>
+						<description>&orgWarn;</description>
+						<separator class="thin"/>
 						<hbox flex="1">
 							<vbox flex="1">
 								<listbox rows="8" id="orgListbox" onselect="wdw_cardbookConfiguration.selectOrg();" ondblclick="wdw_cardbookConfiguration.renameOrg();"/>
@@ -450,67 +511,6 @@
 									<button id="deleteOrgLabel" label="&deleteTypeLabel;" accesskey="&deleteTypeAccesskey;" oncommand="wdw_cardbookConfiguration.deleteOrg();" disabled="true"/>
 								</vbox>
 							</hbox>
-						</hbox>
-					</groupbox>
-				</tabpanel>
-
-				<tabpanel orient="vertical">
-					<caption label="&customFieldsPanelLabel;"/>
-					<groupbox>
-						<caption label="&persTitleLabel;"/>
-						<hbox flex="1">
-							<vbox flex="1">
-								<grid align="center" flex="1">
-									<columns>
-										<column flex="1"/>
-										<column flex="1"/>
-									</columns>
-						
-									<rows>
-										<row align="center">
-											<label value="&customFieldName;"/>
-											<label value="&customFieldLabel;"/>
-										</row>
-										<row align="center">
-											<textbox id="customField1NameName" label="&customFieldName;"/>
-											<textbox id="customField1NameLabel" label="&customFieldLabel;"/>
-										</row>
-										<row align="center">
-											<textbox id="customField2NameName" label="&customFieldName;"/>
-											<textbox id="customField2NameLabel" label="&customFieldLabel;"/>
-										</row>
-									</rows>
-								</grid>
-							</vbox>
-						</hbox>
-					</groupbox>
-
-					<groupbox>
-						<caption label="&orgTitleLabel;"/>
-						<hbox flex="1">
-							<vbox flex="1">
-								<grid align="center" flex="1">
-									<columns>
-										<column flex="1"/>
-										<column flex="1"/>
-									</columns>
-						
-									<rows>
-										<row align="center">
-											<label value="&customFieldName;"/>
-											<label value="&customFieldLabel;"/>
-										</row>
-										<row align="center">
-											<textbox id="customField1OrgName" label="&customFieldName;"/>
-											<textbox id="customField1OrgLabel" label="&customFieldLabel;"/>
-										</row>
-										<row align="center">
-											<textbox id="customField2OrgName" label="&customFieldName;"/>
-											<textbox id="customField2OrgLabel" label="&customFieldLabel;"/>
-										</row>
-									</rows>
-								</grid>
-							</vbox>
 						</hbox>
 					</groupbox>
 				</tabpanel>
@@ -632,10 +632,12 @@
 							<checkbox id="preferEmailPrefCheckBox" label="&preferEmailPrefLabel;"
 								accesskey="&preferEmailPrefAccesskey;"
 								preference="extensions.cardbook.preferEmailPref"/>
+							<image class="cardbookPrefStarClass" haspref="true"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
 							<caption label="&preferEmailPrefWarn;"/>
+							<image class="cardbookPrefStarClass"/>
 						</hbox>
 						<separator class="thin"/>
 						<hbox align="center">
@@ -704,19 +706,11 @@
 						<hbox align="center">
 							<checkbox id="searchInNoteCheckBox" label="&searchInNoteLabel;" 
 								accesskey="&searchInNoteAccesskey;" 
-								tooltiptext = "&searchInNoteTooltip;"
 								preference="extensions.cardbook.searchInNote"/>
 						</hbox>
 						<separator class="thin"/>
-						<hbox align="center" >
-							<label value="&dateFormatLabel;"
-								accesskey="&dateFormatAccesskey;"
-								control="dateFormatMenuList"
-								id="dateFormatLabel"/>
-							<menulist id="dateFormatMenuList" preference="extensions.cardbook.dateFormatMenu">  
-								<menupopup id="dateFormatMenuPopup"/>
-							</menulist>    
-						</hbox>
+						<description>&searchInNoteTooltip1;</description>
+						<description>&searchInNoteTooltip2;</description>
 					</groupbox>
 				</tabpanel>
 			

@@ -378,13 +378,21 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				cardbookUtils.updatePanelMenulist('type', this);
 			};
 			aPanel.addEventListener("popuphiding", firePopuphiding, false);
+			function fireKeyDown(aEvent) {
+				cardbookUtils.enterPanelMenulist('type', aEvent, this);
+			};
+			aMenulist.addEventListener("keydown", fireKeyDown, false);
 		},
 
-		addMenuCaselist: function (aParent, aType, aIndex, aValue) {
+		addMenuCaselist: function (aParent, aType, aIndex, aValue, aParameters) {
 			var strBundle = document.getElementById("cardbook-strings");
 			var aMenulist = document.createElement('menulist');
 			aParent.appendChild(aMenulist);
 			aMenulist.setAttribute('id', aType + '_' + aIndex + '_menulistCase');
+			for (var prop in aParameters) {
+				aMenulist.setAttribute(prop, aParameters[prop]);
+			}
+			
 			var aMenupopup = document.createElement('menupopup');
 			aMenulist.appendChild(aMenupopup);
 			aMenupopup.setAttribute('id', aType + '_' + aIndex + '_menupopupCase');
@@ -407,10 +415,14 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 		},
 
-		addMenuObjlist: function (aParent, aType, aIndex, aValue) {
+		addMenuObjlist: function (aParent, aType, aIndex, aValue, aParameters) {
 			var aMenulist = document.createElement('menulist');
 			aParent.appendChild(aMenulist);
 			aMenulist.setAttribute('id', aType + '_' + aIndex + '_menulistObj');
+			for (var prop in aParameters) {
+				aMenulist.setAttribute(prop, aParameters[prop]);
+			}
+			
 			var aMenupopup = document.createElement('menupopup');
 			aMenulist.appendChild(aMenupopup);
 			aMenupopup.setAttribute('id', aType + '_' + aIndex + '_menupopupObj');
@@ -433,10 +445,14 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 		},
 
-		addMenuTermlist: function (aParent, aType, aIndex, aValue) {
+		addMenuTermlist: function (aParent, aType, aIndex, aValue, aParameters) {
 			var aMenulist = document.createElement('menulist');
 			aParent.appendChild(aMenulist);
 			aMenulist.setAttribute('id', aType + '_' + aIndex + '_menulistTerm');
+			for (var prop in aParameters) {
+				aMenulist.setAttribute(prop, aParameters[prop]);
+			}
+			
 			var aMenupopup = document.createElement('menupopup');
 			aMenulist.appendChild(aMenupopup);
 			aMenupopup.setAttribute('id', aType + '_' + aIndex + '_menupopupTerm');

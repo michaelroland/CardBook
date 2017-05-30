@@ -121,7 +121,6 @@
 <!ENTITY deleteIMPPLabel "Elimina">
 <!ENTITY deleteIMPPAccesskey "E">
 
-<!ENTITY customFieldsPanelLabel "Scegli i tuoi campi personalizzati.">
 <!ENTITY customFieldName "Nome del campo">
 <!ENTITY customFieldLabel "Etichetta del campo">
 
@@ -176,12 +175,14 @@
 <!ENTITY displayvCardLabel "Visualizza la vCard">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "È possibile effettuare una ricerca per compleanno solo nelle rubriche di CardBook.">
+<!ENTITY birthdayListWarn "È possibile effettuare una ricerca per compleanno solo nelle rubriche di CardBook.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Rubriche">
 <!ENTITY calendarsGroupboxLabel "Calendari">
 <!ENTITY searchGroupboxLabel "Cerca">
 <!ENTITY searchInNoteLabel "Cerca i compleanni nel campo Note">
-<!ENTITY searchInNoteTooltip "Aggiungere questa tipologia di riche nel campo Note (come separatore, utilizzare il carattere DUE PUNTI ':' e utilizzare il seguente formato per la data): Compleanno:Io e Te, primo bacio:02.12.2006">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Evento:Descrizione:02.12.2006">
+<!ENTITY searchInNoteTooltipOld "Aggiungere questa tipologia di riche nel campo Note (come separatore, utilizzare il carattere DUE PUNTI ':' e utilizzare il seguente formato per la data): Compleanno:Io e Te, primo bacio:02.12.2006">
 <!ENTITY searchInNoteAccesskey "S">
 <!ENTITY dateFormatLabel "Formato per la data previsto">
 <!ENTITY dateFormatAccesskey "E">

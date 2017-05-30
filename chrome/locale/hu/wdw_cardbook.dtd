@@ -78,7 +78,7 @@
 <!ENTITY titleColumnLabel "Title">
 <!ENTITY roleColumnLabel "Szerep">
 <!ENTITY orgColumnLabel "Szervezet">
-<!ENTITY categoriesColumnLabel "Kategóriák">
+<!ENTITY categoriesColumnLabel "Kategória">
 <!ENTITY noteColumnLabel "Jegyzetek">
 <!ENTITY prodidColumnLabel "Prodid">
 <!ENTITY sortstringColumnLabel "String rendezése">
@@ -93,7 +93,7 @@
 <!ENTITY revColumnLabel "Felülvizsgálat">
 <!ENTITY etagColumnLabel "Elektronikus címke">
 
-<!ENTITY categoriesGroupboxLabel "Kategóriák">
+<!ENTITY categoriesGroupboxLabel "Kategória">
 <!ENTITY noteTabLabel "Jegyzetek">
 
 <!ENTITY miscGroupboxLabel "Különféle">

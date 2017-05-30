@@ -59,6 +59,8 @@ if ("undefined" == typeof(cardbookObserver)) {
 			observerService.addObserver(this, "cardbook.cardImportedFromFile", false);
 
 			observerService.addObserver(this, "cardbook.DBOpen", false);
+
+			observerService.addObserver(this, "cardbook.preferencesChanged", false);
 		},
 		
 		unregister: function() {
@@ -87,6 +89,8 @@ if ("undefined" == typeof(cardbookObserver)) {
 			observerService.removeObserver(this, "cardbook.cardImportedFromFile");
 
 			observerService.removeObserver(this, "cardbook.DBOpen");
+
+			observerService.removeObserver(this, "cardbook.preferencesChanged");
 		},
 		
 		observe: function(aSubject, aTopic, aData) {
@@ -101,6 +105,7 @@ if ("undefined" == typeof(cardbookObserver)) {
 				case "cardbook.cardPasted":
 				case "cardbook.cardDragged":
 				case "cardbook.cardImportedFromFile":
+				case "cardbook.preferencesChanged":
 					wdw_cardbook.refreshWindow();
 					break;
 				case "cardbook.catAddedDirect":

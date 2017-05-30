@@ -104,9 +104,9 @@
 <!ENTITY deleteTypeAccesskey "U">
 <!ENTITY resetTypeLabel "Przywróć domyślne">
 <!ENTITY resetTypeAccesskey "P">
-<!ENTITY preferenceGroupboxLabel "Pole PREF">
-<!ENTITY preferenceValueLabel "Etykieta pola wartości PREF (tylko vCard 4.0)">
-<!ENTITY preferenceValueAccesskey "w">
+<!ENTITY preferenceGroupboxLabel "Oznaczenie Podstawowy">
+<!ENTITY preferenceValueLabel "Etykieta oznaczenia Podstawowy (tylko vCard 4.0)">
+<!ENTITY preferenceValueAccesskey "o">
 
 <!ENTITY IMPPGroupboxWarn "Te ustawienia pozwalają na korzystanie z komunikatorów internetowych przy pomocy odpowiedniego protokołu.">
 <!ENTITY IMPPGroupboxLabel "Komunikatory internetowe">
@@ -120,7 +120,6 @@
 <!ENTITY deleteIMPPLabel "Usuń">
 <!ENTITY deleteIMPPAccesskey "U">
 
-<!ENTITY customFieldsPanelLabel "Zdefiniuj własne pola.">
 <!ENTITY customFieldName "Nazwa pola">
 <!ENTITY customFieldLabel "Etykieta pola">
 
@@ -159,9 +158,9 @@
 <!ENTITY decodeReportAccesskey "U">
 
 <!ENTITY miscEmailGroupboxLabel "Wysyłanie e-maili">
-<!ENTITY preferEmailPrefLabel "Preferuj adresy e-mail oznaczone jako PREFerowane">
+<!ENTITY preferEmailPrefLabel "Używaj adresów e-mail oznaczonych jako Podstawowy">
 <!ENTITY preferEmailPrefAccesskey "P">
-<!ENTITY preferEmailPrefWarn "Jeśli żaden z adresów nie jest oznaczony jako PREFerowany, wiadomość zostanie wysłana na wszystkie adresy z wizytówki.">
+<!ENTITY preferEmailPrefWarn "Jeśli żaden z adresów nie jest oznaczony jako Podstawowy, wiadomość zostanie wysłana na wszystkie adresy z wizytówki.">
 <!ENTITY warnEmptyEmailsLabel "Ostrzegaj, jeśli próbuję wysłać e-mail do wizytówki bez adresu e-mail">
 <!ENTITY warnEmptyEmailsAccesskey "O">
 <!ENTITY attachvCardWarn "Aby automatycznie dodawać vCard do Twoich e-maili, wybierz vCard dla każdego konta pocztowego. Gdy ta opcja jest włączona, CardBook załączy wybrany vCard do każdego e-maila wychodzącego z tego konta.">
@@ -175,12 +174,14 @@
 <!ENTITY displayvCardLabel "Zobacz vCard">
 <!ENTITY displayvCardAccesskey "Z">
 
-<!ENTITY birthdayListWarn "Daty urodzin są wyszukiwane tylko w książkach adresowych CardBook.">
+<!ENTITY birthdayListWarn "Daty urodzin są wyszukiwane tylko w książkach adresowych CardBook.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Książki adresowe">
 <!ENTITY calendarsGroupboxLabel "Kalendarze">
 <!ENTITY searchGroupboxLabel "Wyszukiwanie">
 <!ENTITY searchInNoteLabel "Wyszukuj daty urodzin w polu Notatki">
-<!ENTITY searchInNoteTooltip "Dodaj takie linie w polu Notatki (oddzielone : w formacie daty takim, jak podany poniżej): Urodziny:Ja i ty, pierwszy pocałunek:02.12.2006">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Wydarzenie:Opis:02.12.2006">
+<!ENTITY searchInNoteTooltipOld "Dodaj takie linie w polu Notatki (oddzielone : w formacie daty takim, jak podany poniżej): Urodziny:Ja i ty, pierwszy pocałunek:02.12.2006">
 <!ENTITY searchInNoteAccesskey "D">
 <!ENTITY dateFormatLabel "Oczekiwany format daty">
 <!ENTITY dateFormatAccesskey "O">

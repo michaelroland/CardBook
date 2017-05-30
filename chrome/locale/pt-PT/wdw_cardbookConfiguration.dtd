@@ -121,7 +121,6 @@
 <!ENTITY deleteIMPPLabel "Apagar">
 <!ENTITY deleteIMPPAccesskey "G">
 
-<!ENTITY customFieldsPanelLabel "Definição de campos customizaveis.">
 <!ENTITY customFieldName "Nome do campo">
 <!ENTITY customFieldLabel "Etiqueta do campo">
 
@@ -163,7 +162,7 @@
 <!ENTITY preferEmailPrefLabel "Preferir emails marcados como PREFeridos">
 <!ENTITY preferEmailPrefAccesskey "W">
 <!ENTITY preferEmailPrefWarn "Se não existir nenhum PREFerido, a mensagem será enviada para todos os endereços de email.">
-<!ENTITY warnEmptyEmailsLabel "??Warn me when I attempt to email contacts without an email address??">
+<!ENTITY warnEmptyEmailsLabel "Avisar quando tento enviar emails para contactos sem endereço de email">
 <!ENTITY warnEmptyEmailsAccesskey "W">
 <!ENTITY attachvCardWarn "Para adicionar automaticamente um vCard, seleccione um vCard para cada conta de email. Se activo, o CardBook vai anexar esse vCard para todos os emails de saída da conta seleccionada.">
 <!ENTITY attachvCardGroupboxLabel "Unir vCard">
@@ -176,12 +175,14 @@
 <!ENTITY displayvCardLabel "Ver um vCard">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "Os aniversários são procurados dentro das agendas no CardBook.">
+<!ENTITY birthdayListWarn "Os aniversários são procurados dentro das agendas no CardBook.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Agendas">
 <!ENTITY calendarsGroupboxLabel "Calendarios">
 <!ENTITY searchGroupboxLabel "Procura">
 <!ENTITY searchInNoteLabel "Procurar aniversários no campo Notas">
-<!ENTITY searchInNoteTooltip "Adicionar linhas ao campo de notas (O separador deve ser : e o formatoda data deve ser o seguinte:: Aniversário do primeiro beijo : 01.01.2011">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Evento:Descrição:02.12.2006">
+<!ENTITY searchInNoteTooltipOld "Adicionar linhas ao campo de notas (O separador deve ser : e o formatoda data deve ser o seguinte:: Aniversário do primeiro beijo : 01.01.2011">
 <!ENTITY searchInNoteAccesskey "A">
 <!ENTITY dateFormatLabel "Formato de data esperado">
 <!ENTITY dateFormatAccesskey "F">

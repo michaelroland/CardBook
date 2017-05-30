@@ -762,12 +762,7 @@ cardbookPreferenceService.prototype = {
         if (dateFormat != null && dateFormat !== undefined && dateFormat != "") {
         	return dateFormat;
         } else {
-        	dateFormat = this._getRootPref(this.prefCardBookRoot + "dateFormatMenu");
-	if (dateFormat != null && dateFormat !== undefined && dateFormat != "") {
-		return dateFormat;
-	} else {
-		return "YYYY-MM-DD";
-	}
+        	return "YYYYMMDD";
         }
     },
 

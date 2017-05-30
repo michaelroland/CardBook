@@ -121,7 +121,6 @@
 <!ENTITY deleteIMPPLabel "Supprimer">
 <!ENTITY deleteIMPPAccesskey "S">
 
-<!ENTITY customFieldsPanelLabel "Définissez vos champs personnalisés.">
 <!ENTITY customFieldName "Nom du champ">
 <!ENTITY customFieldLabel "Label du champ">
 
@@ -176,12 +175,13 @@
 <!ENTITY displayvCardLabel "Voir la vCard">
 <!ENTITY displayvCardAccesskey "V">
 
-<!ENTITY birthdayListWarn "Les anniversaires sont uniquement recherchés dans les carnets d'adresses de CardBook.">
+<!ENTITY birthdayListWarn "Les anniversaires sont uniquement recherchés dans les carnets d'adresses de CardBook. Le format de la date est définie dans les propriétés du carnet d'adresses.">
 <!ENTITY addressBooksGroupboxLabel "Carnets d'adresses">
 <!ENTITY calendarsGroupboxLabel "Calendriers">
 <!ENTITY searchGroupboxLabel "Recherche">
 <!ENTITY searchInNoteLabel "Recherche d'anniversaire dans le champ Note">
-<!ENTITY searchInNoteTooltip "Ajoutez ce genre de ligne dans le champ Note (le separateur doit être : et le format de date doit être celui fourni ci-dessous) : Birthday:Toi et moi, premiere rencontre:02.12.2006">
+<!ENTITY searchInNoteTooltip1 "Ajoutez ce genre de ligne dans le champ Note (le separateur doit être : et le format de date doit être celui défini pour le carnet d'adresses) :">
+<!ENTITY searchInNoteTooltip2 "Évènement:Description:02.12.2006">
 <!ENTITY searchInNoteAccesskey "R">
 <!ENTITY dateFormatLabel "Format de date attendu">
 <!ENTITY dateFormatAccesskey "F">

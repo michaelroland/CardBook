@@ -30,13 +30,14 @@
 	onload="wdw_cardEdition.load();" resizable="true"
 	onclose="wdw_cardEdition.cancel();"
 	id="wdw_cardEdition"
-	persist="screenX screenY width height" class="cardbookBackgroundColorClass"
+	persist="screenX screenY width height" class="cardbookBackgroundColorClass dialog-content-box"
 	style="min-width:500px;min-height:600px;">
 	
 	<stringbundleset id="stringbundleset"/>
 
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script src="chrome://cardbook/content/cardbookTypes.js"/>
 	<script src="chrome://cardbook/content/wdw_log.js"/>
@@ -100,7 +101,7 @@
 								<groupbox id="categoriesReadWriteGroupbox" flex="1">
 									<caption label="&categoriesGroupboxLabel;" class="header"/>
 									<hbox align="center" flex="1" style="min-height:36px;">
-										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1">
+										<menulist id="categoriesMenulist" type="cardbookPanelMenulist" flex="1" onkeydown="cardbookUtils.enterPanelMenulist('category', event, this);">
 											<panel id="categoriesPanel" type="cardbookItemPanel" onpopuphiding="cardbookUtils.updatePanelMenulist('category', this);"/>
 										</menulist>
 									</hbox>
@@ -175,14 +176,14 @@
 									<hbox flex="1" align="center">
 										<label id="bdayLabel" value="&bdayLabel;" control="bdayTextBox" class="header"/>
 										<spacer flex="1"/>
-										<button id="cardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;"
-												onclick="wdw_cardEdition.openCalendarPanel();" oninput="wdw_cardEdition.openCalendarPanel();"/>
-											<panel id="bdayLightningPanel">
-												<minimonth id="bdayMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value);"/>
-											</panel>
-											<panel id="bdayBasePanel">
-												<datepicker id="bdayDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value);"/>
-											</panel>
+										<button id="bdaycardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;"
+												onclick="wdw_cardEdition.openCalendarPanel('bday');" oninput="wdw_cardEdition.openCalendarPanel('bday');"/>
+										<panel id="bdayLightningPanel">
+											<minimonth id="bdayMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'bday');"/>
+										</panel>
+										<panel id="bdayBasePanel">
+											<datepicker id="bdayDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'bday');"/>
+										</panel>
 									</hbox>
 									<textbox id="bdayTextBox"/>
 								</row>
@@ -292,9 +293,21 @@
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">
-				<hbox id="noteGroupbox" flex="1">
-					<textbox id="noteTextBox" flex="1" multiline="true" wrap="virtual"/>
-				</hbox>
+				<vbox id="noteGroupbox" flex="1">
+					<hbox>
+						<button id="noteCardbookCalendar" class="small-button" label="📅" tooltiptext="&cardbookCalendarButtonTooltip;"
+								onclick="wdw_cardEdition.openCalendarPanel('note');" oninput="wdw_cardEdition.openCalendarPanel('note');"/>
+						<panel id="noteLightningPanel">
+							<minimonth id="noteMinimonth" flex="1" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+						</panel>
+						<panel id="noteBasePanel">
+							<datepicker id="noteDatepicker" type="grid" onchange="wdw_cardEdition.validateCalendarPanel(this.value, 'note');"/>
+						</panel>
+					</hbox>
+					<hbox flex="1">
+						<textbox id="noteTextBox" flex="1" multiline="true" wrap="virtual"/>
+					</hbox>
+				</vbox>
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">

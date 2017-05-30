@@ -46,25 +46,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 				margin-inline-end: -1px;\
 				list-style-image: url('chrome://messenger/skin/addressbook/icons/remote-addrbook.png');\
 				}";
-				
-			cardbookAutocomplete.iconRuleStrings["standard-abook"] = {};
-			cardbookAutocomplete.iconRuleStrings["standard-abook"]["LINUX"] = "treechildren::-moz-tree-image(standard-abook treecolAutoCompleteValue) {\
-				margin-inline-start: 3px;\
-				margin-inline-end: 2px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/addrbook.png');\
-				}";
-			cardbookAutocomplete.iconRuleStrings["standard-abook"]["WIN"] = "treechildren::-moz-tree-image(standard-abook treecolAutoCompleteValue) {\
-				margin-inline-start: 2px;\
-				margin-inline-end: 5px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/addrbook.png');\
-				}";
-			cardbookAutocomplete.iconRuleStrings["standard-abook"]["OSX"] = "treechildren::-moz-tree-image(standard-abook treecolAutoCompleteValue) {\
-				margin-top: 2px;\
-				margin-bottom: 2px;\
-				margin-inline-start: 4px;\
-				margin-inline-end: -1px;\
-				list-style-image: url('chrome://messenger/skin/addressbook/icons/addrbook.png');\
-				}";
 		},
 
 		createCssMsgIconsRules: function (aStyleSheet, aOSName) {
@@ -100,9 +81,9 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 
 		loadCssRules: function () {
 			try {
-				if (navigator.appVersion.indexOf("Win")!=-1) {
+				if (navigator.appVersion.indexOf("Win") != -1) {
 					var OSName="WIN";
-				} else if (navigator.appVersion.indexOf("Mac")!=-1) {
+				} else if (navigator.appVersion.indexOf("Mac") != -1) {
 					var OSName="OSX";
 				} else {
 					var OSName="LINUX";
@@ -133,7 +114,11 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 			try {
 				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 				if (prefs.getBoolPref("extensions.cardbook.autocompletion")) {
-					aTextBox.setAttribute('autocompletesearch', 'addrbook-cardbook');
+					if (prefs.getBoolPref("extensions.cardbook.exclusive")) {
+						aTextBox.setAttribute('autocompletesearch', 'addrbook-cardbook');
+					} else {
+						aTextBox.setAttribute('autocompletesearch', 'addrbook-cardbook addrbook ldap');
+					}
 				} else {
 					aTextBox.setAttribute('autocompletesearch', 'addrbook ldap');
 				}

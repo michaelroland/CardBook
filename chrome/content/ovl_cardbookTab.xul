@@ -64,19 +64,21 @@
 			
 			<hbox id="mainHbox" flex="1">
 				<vbox id="leftPaneVbox" persist="width collapsed">
+					<hbox>
+						<vbox flex="1">
+							<button id="accountsOrCatsTreeLabel" label="&accountsOrCatsTreeLabel;" flex="1"/>
+						</vbox>
+					</hbox>
 					<tree id="accountsOrCatsTree"
 						class="cardbookTreeClass cardbookAccountTreeClass"
 						seltype="single"
 						flex="1" editable="true" context="accountsOrCatsTreeContextMenu" enableColumnDrag="false"
-						hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();" onkeydown="wdw_cardbook.selectAccountOrCatInNoSearch();">
+						hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();">
 						<treecols>
 							<treecol id="accountEnabled" type="checkbox" editable="true" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="&enableAccountsTooltip;"/>
 							<treecol id="accountTypeCheckbox" type="checkbox" editable="false" width="20" hideheader="true" persist="width ordinal hidden"/>
 							<treecol id="accountColor" editable="false" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="&colorAccountsTooltip;"/>
-							<treecol id="accountName"
-								flex="1" persist="width ordinal hidden" primary="true"
-								label="&accountsOrCatsTreeLabel;"
-								crop="center"/>
+							<treecol id="accountName" flex="1" persist="width ordinal hidden" primary="true" hideheader="true" crop="center"/>
 							<treecol id="accountId" persist="width ordinal hidden" hidden="true" hideheader="true"/>
 							<treecol id="accountType" persist="width ordinal hidden" hidden="true" hideheader="true"/>
 							<treecol id="accountReadOnly" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true" tooltiptext="&readonlyAccountsTooltip;"/>

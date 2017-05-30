@@ -2029,7 +2029,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 										cardbookRepository.cardbookSyncMode = "NOSYNC";
 										cardbookUtils.formatStringForOutput("synchroAllFinished");
 										if (aMode == "INITIAL") {
-											cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js","chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
+											cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js",
+																		"chrome://cardbook/content/cardbookDates.js",
+																		"chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
 											ovl_birthdays.onLoad();
 										}
 									}
@@ -2058,7 +2060,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								if (total === 0) {
 									cardbookRepository.cardbookSyncMode = "NOSYNC";
 									if (aMode == "INITIAL") {
-										cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js","chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
+										cardbookUtils.jsInclude(["chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js",
+																	"chrome://cardbook/content/cardbookDates.js",
+																	"chrome://cardbook/content/birthdays/ovl_birthdays.js"]);
 										ovl_birthdays.onLoad();
 									}
 								}
@@ -2135,8 +2139,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookDisplayCards = {};
 			cardbookRepository.cardbookFileCacheCards = {};
 			cardbookRepository.cardbookCards = {};
-			cardbookRepository.cardbookCardSearch1 = {};
-			cardbookRepository.cardbookCardSearch2 = {};
+			cardbookRepository.cardbookCardSearch = {};
 	
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 			var initialSync = prefs.getBoolPref("extensions.cardbook.initialSync");

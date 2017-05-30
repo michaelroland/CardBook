@@ -570,6 +570,11 @@ if ("undefined" == typeof(cardbookTypes)) {
 				};
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("click", fireEditAdr, false);
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireEditAdr, false);
+				// save the information in case of a hiding (especially when another window opens up
+				function firePopupHidingAdr() {
+					wdw_cardEdition.validateAdrPanel();
+				};
+				document.getElementById('adrPanel').addEventListener("popuphiding", firePopupHidingAdr, false);
 			}
 		
 			for (var i = 0; i < aCardValue.length; i++) {

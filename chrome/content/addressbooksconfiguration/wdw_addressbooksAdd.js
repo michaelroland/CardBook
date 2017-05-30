@@ -454,9 +454,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				}
 				var aTextbox = document.getElementById('serverColorInput');
 				aTextbox.value = cardbookUtils.randomColor(100);
-				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-				var dateFormatMenu = prefs.getComplexValue("extensions.cardbook.dateFormatMenu", Components.interfaces.nsISupportsString).data;
-				cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", dateFormatMenu);
+				cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", "YYYYMMDD");
 			}
 			wdw_addressbooksAdd.checkRequired();
 		},
@@ -544,9 +542,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var aMenuPopup = document.createElement('menupopup');
 			aMenuList.appendChild(aMenuPopup);
 			aMenuPopup.setAttribute('id', 'dateFormatMenuPopup' + aId);
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var dateFormatMenu = prefs.getComplexValue("extensions.cardbook.dateFormatMenu", Components.interfaces.nsISupportsString).data;
-			cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, dateFormatMenu);
+			cardbookElementTools.loadDateFormats(aMenuPopup.id, aMenuList.id, "YYYYMMDD");
 
 			var aCheckbox1 = document.createElement('checkbox');
 			aRow.appendChild(aCheckbox1);

@@ -121,7 +121,6 @@
 <!ENTITY deleteIMPPLabel "Verwijderen">
 <!ENTITY deleteIMPPAccesskey "V">
 
-<!ENTITY customFieldsPanelLabel "Definieer eigen rubrieken">
 <!ENTITY customFieldName "Rubriek naam">
 <!ENTITY customFieldLabel "Rubriek label">
 
@@ -176,12 +175,14 @@
 <!ENTITY displayvCardLabel "Bekijk de vCard">
 <!ENTITY displayvCardAccesskey "B">
 
-<!ENTITY birthdayListWarn "Let op: geboortedata worden uitsluitend in CardBook adresboeken gezocht.">
+<!ENTITY birthdayListWarn "Let op: geboortedata worden uitsluitend in CardBook adresboeken gezocht.?? Birthdays date formats are set up in the address book properties.??">
 <!ENTITY addressBooksGroupboxLabel "Adresboeken">
 <!ENTITY calendarsGroupboxLabel "Agenda's">
 <!ENTITY searchGroupboxLabel "Zoeken">
 <!ENTITY searchInNoteLabel "Zoek bijzondere gebeurtenissen in de rubriek Notities">
-<!ENTITY searchInNoteTooltip "Bijzondere gebeurtenissen in de rubriek Notities toevoegen (Scheidingsteken : en datumformaat zoals hieronder) : Verjaardag:Onze eerste zoen:02.12.1996">
+<!ENTITY searchInNoteTooltip1 "??Add such lines in the Note field  (separator should be : and the date format should be the one defined for the address book) :??">
+<!ENTITY searchInNoteTooltip2 "Gebeurtenis:Beschrijving:02.12.2006">
+<!ENTITY searchInNoteTooltipOld "Bijzondere gebeurtenissen in de rubriek Notities toevoegen (Scheidingsteken : en datumformaat zoals hieronder) : Verjaardag:Onze eerste zoen:02.12.1996">
 <!ENTITY searchInNoteAccesskey "Z">
 <!ENTITY dateFormatLabel "Datumformaat">
 <!ENTITY dateFormatAccesskey "D">

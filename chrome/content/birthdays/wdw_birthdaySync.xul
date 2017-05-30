@@ -16,8 +16,8 @@
 	
 	<stringbundleset id="stringbundleset"/>
 
-	<script src="chrome://messenger/content/dateFormat.js"/>
 	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
 	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
 	<script src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script src="chrome://cardbook/content/birthdays/wdw_birthdaySync.js"/>

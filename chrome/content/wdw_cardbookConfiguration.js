@@ -7,7 +7,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 		allRestrictions: [],
 		allEmailsCollections: [],
 		allMailAccounts: [],
-		prefEmailPref: false,
+		preferEmailPrefOld: false,
 		
 		sortTreesFromCol: function (aEvent, aColumn, aTreeName) {
 			if (aEvent.button == 0) {
@@ -286,12 +286,12 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadPrefEmailPref: function () {
 			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			wdw_cardbookConfiguration.prefEmailPref = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
+			wdw_cardbookConfiguration.preferEmailPrefOld = prefs.getBoolPref("extensions.cardbook.preferEmailPref");
 		},
 
 		validatePrefEmailPref: function () {
 			var myNewCheck = document.getElementById('preferEmailPrefCheckBox').checked;
-			if (myNewCheck !== wdw_cardbookConfiguration.prefEmailPref) {
+			if (myNewCheck !== wdw_cardbookConfiguration.preferEmailPrefOld) {
 				for (j in cardbookRepository.cardbookCards) {
 					let myCard = cardbookRepository.cardbookCards[j];
 					if (!myCard.isAList) {
@@ -574,12 +574,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			}
 		},
 
-		loadDateFormats: function () {
-			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-			var dateFormatMenu = prefs.getComplexValue("extensions.cardbook.dateFormatMenu", Components.interfaces.nsISupportsString).data;
-			cardbookElementTools.loadDateFormats("dateFormatMenuPopup", "dateFormatMenuList", dateFormatMenu);
-		},
-
 		validateEventEntryTitle: function () {
 			var checkTest = document.getElementById('calendarEntryTitleTextBox').value.split("%S").length - 1;
 			if (checkTest != 2) {
@@ -711,6 +705,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 
 		loadPref: function () {
 			if (document.getElementById('preferenceValueTextbox').value == "") {
+				var cardbookPrefService = new cardbookPreferenceService();
 				document.getElementById('preferenceValueTextbox').value = cardbookPrefService.getPrefValueLabel();
 			}
 		},
@@ -898,7 +893,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				cardbookPrefService.setRestriction(wdw_cardbookConfiguration.allRestrictions[i][1], wdw_cardbookConfiguration.allRestrictions[i][0].toString() + "::" + wdw_cardbookConfiguration.allRestrictions[i][9]
 													+ "::" + wdw_cardbookConfiguration.allRestrictions[i][3] + "::" + wdw_cardbookConfiguration.allRestrictions[i][5] + "::" + wdw_cardbookConfiguration.allRestrictions[i][6]);
 			}
-			cardbookUtils.notifyObservers("cardbook.restrictionsChanged");
 		},
 
 		selectEmailsCollection: function() {
@@ -1172,6 +1166,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					cardbookPrefService.setTypes(i, j, wdw_cardbookConfiguration.allTypes[i][j][0] + ":" + wdw_cardbookConfiguration.allTypes[i][j][1]);
 				}
 			}
+			cardbookUtils.notifyObservers("cardbook.typesChanged");
 		},
 
 		selectIMPPsCategory: function () {
@@ -1430,7 +1425,6 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			wdw_cardbookConfiguration.loadPeriodicSync();
 			wdw_cardbookConfiguration.loadCustoms();
 			wdw_cardbookConfiguration.loadAddressBooks("addressBooksNameList", false);
-			wdw_cardbookConfiguration.loadDateFormats();
 			wdw_cardbookConfiguration.loadMailAccounts();
 			wdw_cardbookConfiguration.sortTrees(null, "mailAccountsTree");
 			wdw_cardbookConfiguration.loadRestrictions();
@@ -1463,6 +1457,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				// return false;
 				throw "CardBook validation error";
 			}
+			cardbookUtils.notifyObservers("cardbook.preferencesChanged");
 		},
 		
 

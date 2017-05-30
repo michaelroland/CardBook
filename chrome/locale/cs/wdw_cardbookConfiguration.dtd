@@ -121,7 +121,6 @@
 <!ENTITY deleteIMPPLabel "Smazat">
 <!ENTITY deleteIMPPAccesskey "S">
 
-<!ENTITY customFieldsPanelLabel "Definujte vaše vlastní pole.">
 <!ENTITY customFieldName "Název pole">
 <!ENTITY customFieldLabel "Popisek pole">
 
@@ -176,12 +175,13 @@
 <!ENTITY displayvCardLabel "Zobrazit vCard">
 <!ENTITY displayvCardAccesskey "B">
 
-<!ENTITY birthdayListWarn "Narozeniny jsou hledány pouze v adresářích CardBooku.">
+<!ENTITY birthdayListWarn "Narozeniny jsou hledány pouze v adresářích CardBooku. Formáty data narozenin se nastavují ve vlastnostech adresáře.">
 <!ENTITY addressBooksGroupboxLabel "Adresáře">
 <!ENTITY calendarsGroupboxLabel "Kalendáře">
 <!ENTITY searchGroupboxLabel "Hledat">
 <!ENTITY searchInNoteLabel "Hledat narozeniny v poli s poznámkami">
-<!ENTITY searchInNoteTooltip "Přidejte řádky do poznámek podobné následujícímu oddělovač by měl být : a formát data by měl odpovídat danému níže) : Birthday:You and me, first kiss:02.12.2006">
+<!ENTITY searchInNoteTooltip1 "Přidejte řádky do poznámek podobné následujícímu oddělovač by měl být : a formát data by měl odpovídat nastavenému ve vlastnostech adresáře :">
+<!ENTITY searchInNoteTooltip2 "Událost:Popis:02.12.2006">
 <!ENTITY searchInNoteAccesskey "H">
 <!ENTITY dateFormatLabel "Očekávaný formát data">
 <!ENTITY dateFormatAccesskey "O">
